@@ -54,7 +54,7 @@ export const ServiceLocation = () => {
             label={'State'}
             variant="outlined"
             size={'small'}
-            {...register('State', { required: true, pattern: SEARCH_REGEXP.NOT_NUMBERS })}
+            {...register('State', { required: true, pattern: SEARCH_REGEXP.ADDRESS })}
             error={!!errors.State}
           />
         </Box>

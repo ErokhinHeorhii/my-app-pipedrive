@@ -6,6 +6,7 @@ import { Grid } from '@mui/material'
 
 import { ClientDetails } from './components/ClientDetails'
 import { JobDetails } from './components/JobDetails'
+import { Scheduled } from './components/Scheduled'
 import { ServiceLocation } from './components/ServiceLocation'
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
       </Grid>
       <Grid item xs={5}>
         <ServiceLocation />
+      </Grid>
+      <Grid item xs={5}>
+        <Scheduled />
       </Grid>
     </Grid>
   )
