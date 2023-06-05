@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+
+import './App.css'
+
+import { Grid } from '@mui/material'
+
+import { ClientDetails } from './components/ClientDetails'
+import { JobDetails } from './components/JobDetails'
+import { ServiceLocation } from './components/ServiceLocation'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Grid container spacing={2} sx={{ m: 4, width: '1400px' }}>
+      <Grid item xs={5}>
+        <ClientDetails />
+      </Grid>
+      <Grid item xs={5}>
+        <JobDetails />
+      </Grid>
+      <Grid item xs={5}>
+        <ServiceLocation />
+      </Grid>
+    </Grid>
+  )
 }
 
-export default App;
+export default App
