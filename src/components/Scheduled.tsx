@@ -7,9 +7,8 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider/LocalizationProvider'
 import { Controller, useForm } from 'react-hook-form'
 
-import { area } from '../constant/area'
-import { SEARCH_REGEXP } from '../constant/regex'
 import { testSelect } from '../constant/testSelect'
+import { convertDate, convertTime } from '../helpers/converter'
 
 export const Scheduled = () => {
   type FormData = {
@@ -27,7 +26,13 @@ export const Scheduled = () => {
   } = useForm<FormData>()
 
   const onSubmit = (data: FormData) => {
-    console.log('data', data)
+    // convertDate(data.StartDate)
+    console.log(
+      'data',
+      convertDate(data.StartDate.valueOf()),
+      convertTime(data.StartTime.valueOf()),
+      convertTime(data.EndTime.valueOf())
+    )
   }
 
   console.log('errors', errors)
@@ -44,7 +49,7 @@ export const Scheduled = () => {
               control={control}
               {...register('StartDate', { required: true })}
               // error={!!errors.StartDate}
-              render={({ field, fieldState }) => <DatePicker {...field} label={'Start date'} />}
+              render={({ field }) => <DatePicker {...field} label={'Start date'} />}
             />
           </LocalizationProvider>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
@@ -53,7 +58,7 @@ export const Scheduled = () => {
                 control={control}
                 {...register('StartTime', { required: true })}
                 // error={!!errors.StartTime}
-                render={({ field, fieldState }) => <TimePicker {...field} label={'Start time'} />}
+                render={({ field }) => <TimePicker {...field} label={'Start time'} />}
               />
             </LocalizationProvider>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -61,7 +66,7 @@ export const Scheduled = () => {
                 control={control}
                 {...register('EndTime', { required: true })}
                 // error={!!errors.StartTime}
-                render={({ field, fieldState }) => <TimePicker {...field} label={'End time'} />}
+                render={({ field }) => <TimePicker {...field} label={'End time'} />}
               />
             </LocalizationProvider>
           </Box>
