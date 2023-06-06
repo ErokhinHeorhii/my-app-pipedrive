@@ -1,12 +1,10 @@
 import React from 'react'
 
-import { Box, Button, Paper, TextField, Typography } from '@mui/material'
-import { useForm } from 'react-hook-form'
+import { Box, Paper, TextField, Typography } from '@mui/material'
 
 import { SEARCH_REGEXP } from '../constant/regex'
 
 import { PropsType } from './JobDetails'
-
 export type ClientDetailsType = {
   FirstName: string
   SecondName: string

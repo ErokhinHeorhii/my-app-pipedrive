@@ -7,5 +7,5 @@ export const convertDate = (str: string) => {
 export const convertTime = (str: string) => {
   let normalDate = new Date(str).toLocaleString('en-US')
 
-  return normalDate.split(',')[1]
+  return normalDate.split(',')[1].trim()
 }
