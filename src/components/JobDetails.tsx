@@ -4,6 +4,7 @@ import { Box, MenuItem, Paper, TextField, Typography } from '@mui/material'
 
 import { jobSource } from '../constant/jobSource'
 import { jobType } from '../constant/jobType'
+import { SEARCH_REGEXP } from '../constant/regex'
 
 export type JobDetailsType = {
   JobType: string
@@ -27,7 +28,7 @@ export const JobDetails = ({ register, errors }: PropsType) => {
           defaultValue=""
           variant="outlined"
           size={'small'}
-          {...register('JobType', { required: true, pattern: /[^0-9]+$/i })}
+          {...register('JobType', { required: true })}
           error={!!errors.JobType}
           sx={{ width: '250px' }}
         >
@@ -43,7 +44,7 @@ export const JobDetails = ({ register, errors }: PropsType) => {
           defaultValue=""
           variant="outlined"
           size={'small'}
-          {...register('JobSource', { required: true, pattern: /[^0-9]+$/i })}
+          {...register('JobSource', { required: true })}
           error={!!errors.JobSource}
           sx={{ width: '250px' }}
         >
@@ -61,7 +62,7 @@ export const JobDetails = ({ register, errors }: PropsType) => {
           size={'small'}
           multiline
           rows={4}
-          {...register('JobDescription', { pattern: /[A-Za-zА-Яа-я]+$/i })}
+          {...register('JobDescription', { pattern: SEARCH_REGEXP.LETTERS })}
           error={!!errors.JobDescription}
         />
       </Box>

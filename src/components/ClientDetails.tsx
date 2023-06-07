@@ -19,31 +19,37 @@ export const ClientDetails = ({ register, errors }: PropsType) => {
       </Typography>
       <Box sx={{ m: 2, display: 'flex', justifyContent: 'space-between', gap: 2 }}>
         <TextField
-          label={'First name'}
+          label={errors.FirstName ? errors.FirstName.message || 'First name' : 'First name'}
           variant="outlined"
           size={'small'}
           sx={{ width: '250px' }}
           {...register('FirstName', {
             required: true,
-            pattern: { value: SEARCH_REGEXP.LETTERS, message: 'Please enter a valid data' },
+            pattern: { value: SEARCH_REGEXP.LETTERS, message: 'invalid data format' },
           })}
           error={!!errors.FirstName}
         />
         <TextField
-          label={'Second name'}
+          label={errors.SecondName ? errors.SecondName.message || 'Second name' : 'Second name'}
           variant="outlined"
           size={'small'}
           sx={{ width: '250px' }}
-          {...register('SecondName', { required: true, pattern: SEARCH_REGEXP.NOT_NUMBERS })}
+          {...register('SecondName', {
+            required: true,
+            pattern: { value: SEARCH_REGEXP.LETTERS, message: 'invalid data format' },
+          })}
           error={!!errors.SecondName}
         />
       </Box>
       <Box sx={{ m: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
         <TextField
-          label={'Phone'}
+          label={errors.Phone ? errors.Phone.message || 'Phone' : 'Phone'}
           variant="outlined"
           size={'small'}
-          {...register('Phone', { required: true, pattern: SEARCH_REGEXP.NOT_LETTERS })}
+          {...register('Phone', {
+            required: true,
+            pattern: { value: SEARCH_REGEXP.NUMBERS, message: 'invalid data format' },
+          })}
           error={!!errors.Phone}
         />
         <TextField
