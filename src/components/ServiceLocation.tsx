@@ -1,11 +1,8 @@
 import React from 'react'
 
-import { Box, Button, MenuItem, Paper, TextField, Typography } from '@mui/material'
-import { useForm } from 'react-hook-form'
+import { Box, MenuItem, Paper, TextField, Typography } from '@mui/material'
 
 import { area } from '../constant/area'
-import { jobSource } from '../constant/jobSource'
-import { jobType } from '../constant/jobType'
 import { SEARCH_REGEXP } from '../constant/regex'
 
 import { PropsType } from './JobDetails'
@@ -24,33 +21,45 @@ export const ServiceLocation = ({ register, errors }: PropsType) => {
       </Typography>
       <Box sx={{ m: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
         <TextField
-          label={'Address'}
+          label={errors.Address ? errors.Address.message || 'Address' : 'Address'}
           variant="outlined"
           size={'small'}
-          {...register('Address', { required: true, pattern: SEARCH_REGEXP.ADDRESS })}
+          {...register('Address', {
+            required: true,
+            pattern: { value: SEARCH_REGEXP.ADDRESS, message: 'invalid data format' },
+          })}
           error={!!errors.Address}
         />
         <TextField
-          label={'City'}
+          label={errors.City ? errors.City.message || 'City' : 'City'}
           variant="outlined"
           size={'small'}
-          {...register('City', { required: true, pattern: SEARCH_REGEXP.ADDRESS })}
+          {...register('City', {
+            required: true,
+            pattern: { value: SEARCH_REGEXP.ADDRESS, message: 'invalid data format' },
+          })}
           error={!!errors.City}
         />
         <TextField
-          label={'State'}
+          label={errors.State ? errors.State.message || 'State' : 'State'}
           variant="outlined"
           size={'small'}
-          {...register('State', { required: true, pattern: SEARCH_REGEXP.ADDRESS })}
+          {...register('State', {
+            required: true,
+            pattern: { value: SEARCH_REGEXP.LETTERS, message: 'invalid data format' },
+          })}
           error={!!errors.State}
         />
       </Box>
       <Box sx={{ m: 2, display: 'flex', justifyContent: 'space-between', gap: 2 }}>
         <TextField
-          label={'Zip code'}
+          label={errors.ZipCode ? errors.ZipCode.message || 'ZipCode' : 'ZipCode'}
           variant="outlined"
           size={'small'}
-          {...register('ZipCode', { required: true, pattern: SEARCH_REGEXP.NUMBERS })}
+          {...register('ZipCode', {
+            required: true,
+            pattern: { value: SEARCH_REGEXP.NUMBERS, message: 'invalid data format' },
+          })}
           error={!!errors.ZipCode}
           sx={{ width: '250px' }}
         />

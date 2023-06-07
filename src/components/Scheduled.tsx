@@ -19,6 +19,8 @@ export type ScheduledType = {
 }
 type ScheduledPropsType = PropsType & { control: any }
 export const Scheduled = ({ register, errors, control }: ScheduledPropsType) => {
+  console.log(errors)
+
   return (
     <Paper elevation={3} sx={{ m: 2, height: 300 }}>
       <Typography sx={{ ml: 2 }} variant="h6">
